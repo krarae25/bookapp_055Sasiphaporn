@@ -11,8 +11,8 @@ type BookItemProps = {
 //รับ Props มาแกะตัวแปรใช้งาน เพื่อแสดงผลหน้า UI
 function Bookitem({ book, onToggle, onDelete }: BookItemProps) {
   return (
-    <div>
-      <div className="max-w-lg mx-auto my-3 flex items-center justify-between p-3 border-2 border-blue-800 rounded-xl bg-white shadow-sm">
+    <div  >
+      <div className="max-w-lg mx-auto my-3 flex items-center justify-between p-3 border-2 border-violet-300 rounded-xl bg-white shadow-sm">
   
          {/* ดึงชื่อและปีของหนังสือเล่มนั้นมาวางแสดงผลบน UI */}
         <div className="font-semibold text-gray-800">{book.name}</div>
