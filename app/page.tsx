@@ -25,13 +25,23 @@ function Home() {
 
   // ฟังก์ชันเพิ่มชื่อหนังสือ
   function handleAdd(name: string, year: number, status: boolean) {
-  const newBook: book = {
-    name,
-    year,
-    status, 
-  };
-  setBooks((prev) => [newBook, ...prev]);
-}
+    const newBook: book = {
+      name,
+      year,
+      status, 
+    };
+    setBooks((prev) => [newBook, ...prev]);
+  }
+
+  // === เพิ่มฟังก์ชันสำหรับแก้ไข (Edit) ===
+  // รับชื่อเดิม (เพื่อหาตัวที่จะแก้) และรับชื่อใหม่+ปีใหม่ (เพื่อไปอัปเดต)
+  function handleEdit(oldName: string, newName: string, newYear: number) {
+    setBooks((prev) =>
+      prev.map((book) =>
+        book.name === oldName ? { ...book, name: newName, year: newYear } : book
+      )
+    );
+  }
 
   return (
     <div>
@@ -40,9 +50,14 @@ function Home() {
         <p className="text-gray-500">Every book, you can find here.</p>
       </div> 
 
-  
       <AddBookForm onAdd={handleAdd} />
-      <Booklist books={books} onToggle={handleToggle} onDelete={handleDelete} />  
+      {/* ส่งฟังก์ชัน onEdit ต่อไปให้ลูก */}
+      <Booklist 
+        books={books} 
+        onToggle={handleToggle} 
+        onDelete={handleDelete} 
+        onEdit={handleEdit} 
+      />  
     </div>
   );
 }

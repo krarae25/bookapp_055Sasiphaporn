@@ -1,28 +1,28 @@
-//เเม่รอง
 import Bookitem from "./book-item";
 import type { book } from "@/types/book";
 
-// Props ข้อมูล books และฟังก์ชันสลับสถานะ / ลบรายการที่ต้องรับมาจาก แม่ใหญ่
+// เพิ่ม onEdit ใน Type
 type BooklistProp = {
   books: book[];
   onToggle: (name: string) => void;
   onDelete: (name: string) => void;
+  onEdit: (oldName: string, newName: string, newYear: number) => void;
 };
 
-function Booklist({ books, onToggle, onDelete }: BooklistProp) {
+function Booklist({ books, onToggle, onDelete, onEdit }: BooklistProp) {
   return (
     <div>
-      {/* วนลูปส่งข้อมูลแต่ละเล่ม และส่งฟังก์ชันต่อไปยัง Bookitem */}
       {books.map((book) => (
-        <Bookitem 
-          key={book.name} 
-          book={book} 
+        <Bookitem
+          key={book.name} // หากชื่อหนังสือซ้ำกัน อาจมีปัญหาเตือนเรื่อง key ซ้ำได้ในอนาคต
+          book={book}
           onToggle={onToggle}
           onDelete={onDelete}
+          onEdit={onEdit} 
         />
       ))}
     </div>
-  );
+  )
 }
 
 export default Booklist;

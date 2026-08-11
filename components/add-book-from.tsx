@@ -41,7 +41,7 @@ export default function AddBookForm({ onAdd }: AddBookFormProps) {
             type="number"
             value={year}
             onChange={(e) => setYear(e.target.value)}
-            placeholder="ปี พ.ศ."
+            placeholder="ปี ค.ศ."
             className="w-20 rounded-lg border border-gray-300 px-3 py-2 text-gray-700 outline-none focus:border-blue-500 text-sm"
           />
         </div>
